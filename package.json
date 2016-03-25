@@ -1,7 +1,7 @@
 {
   "name": "dice-expression-evaluator",
   "version": "0.1.0",
-  "description": "Parses and evaluates Dice Expressions using randomized dice rolls",
+  "description": "Parses and evaluates dice expressions using simulated dice rolls",
   "homepage": "",
   "author": {
     "name": "Dan Kang",

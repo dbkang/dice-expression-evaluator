@@ -65,7 +65,7 @@ var d = new DiceExpression('2d5 + 4d2 + 10');
 * `d()`: evaluates the dice expression by simulating dice rolls and returns the resulting roll
 * `d.min()`: returns the minimum possible roll for the dice expression
 * `d.max()`: returns the maximum possible roll for the dice expression
-* `d.roll()`: evaluates the dice expression by simulating dice rolls and returns the resulting roll as well as the value for each term within dice the expression and the individual dice rolls within that term.
+* `d.roll()`: evaluates the dice expression by simulating dice rolls and returns the resulting roll as well as the value for each term within the dice expression and the individual dice rolls within that term.
 
 
 ## Examples
