@@ -67,7 +67,6 @@ describe("DiceExpression", function () {
         var dice = new DiceExpression(exps[i]);
         for (var j = 0; j < 10; j++) {
           var roll = dice.roll();
-          console.log(roll);
           var rollValue = roll.roll;
           var components = roll.diceSums;
           var subComponents = roll.diceRaw;
