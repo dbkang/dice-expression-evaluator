@@ -1,19 +1,17 @@
 # dice-expression-evaluator [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> Parses and evaluates dice expressions using simulated dice rolls
+
+`dice-expession-evaluator` is used to parse dice expressions and to evaluate them using simulated dice rolls.
 
 ## Installation
 
 ```sh
 $ npm install --save dice-expression-evaluator
 ```
-## Introduction
-
-dice-expession-evaluator is used to parse dice expressions and to evaluate them using simulated dice rolls.
 
 ## Dice expressions
 
 Dice expressions are used to specify calculations that are based on a series of dice rolls.
-For example, this would be a dice expression that would represent a single, standard 6-sided die:
+For example, this is a dice expression that represents a single, standard 6-sided die:
 
 ```
 1d6
@@ -25,13 +23,13 @@ This can be shortened to:
 d6
 ```
 
-What if we rolled five of those dice at once and added up the rolls?
+What if we rolled five of those dice at once and added up?
 
 ```
 5d6
 ```
 
-Rolled two other 10-sided dice and subtracted the sum of the rolls from above?
+To roll two other 10-sided dice and subtract the sum of the two from above?
 
 ```
 5d6 - 2d10
@@ -52,7 +50,7 @@ If the number of sides is 100, it can be replaced with a % sign (percentage, out
 Dice expressions can also be specified as:
 
 * Any string denoting a whole number (don't start with 0 or minus sign please) is a dice expression.
-* Any string of form `x?(d|D)y` where x and y are both whole numbers (see warning above) is a dice expression.  ? means x is optional and (d|D) means either character is acceptable.
+* Any string of form `x?(d|D)y` where x and y are both whole numbers (see warning above) is a dice expression.  ? means x is optional and (d|D) means either d or D works.
 * Any string of form `x?(d|D)%` where x and y are both whole numbers is a dice expression.
 * Any string of form DiceExpression + DiceExpression or form DiceExpression - DiceExpression is a dice expression.
 * Leading or trailing spaces don't matter and neither do spaces between terms and operators.  Just like in math.
@@ -81,6 +79,15 @@ d.max() // 28
 d.roll() // { roll: 23, diceSums: [7, 6, 10], diceRaw: [[3, 4], [1, 2, 2, 1], [10]] }
 
 ```
+
+## Future plans
+
+We may add support for
+
+* Coefficients for terms so that we can multiply dice rolls by a constant value
+* Other arithmetic operators
+* Nested expressions using parantheses
+
 
 ## License
 
