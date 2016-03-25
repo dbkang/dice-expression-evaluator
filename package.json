@@ -1,6 +1,6 @@
 {
   "name": "dice-expression-evaluator",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Parses and evaluates Dice Expressions using randomized dice rolls",
   "homepage": "",
   "author": {
