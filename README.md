@@ -1,18 +1,85 @@
 # dice-expression-evaluator [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> Parses and evaluates Dice Expressions using randomized dice rolls
+> Parses and evaluates dice expressions using simulated dice rolls
 
 ## Installation
 
 ```sh
 $ npm install --save dice-expression-evaluator
 ```
+## Introduction
 
-## Usage
+dice-expession-evaluator is used to parse dice expressions and to evaluate them using simulated dice rolls.
+
+## Dice expressions
+
+Dice expressions are used to specify calculations that are based on a series of dice rolls.
+For example, this would be a dice expression that would express represent a single, standard
+6-sided die:
+
+```
+1d6
+```
+
+This can also be shortened as:
+
+```
+d6
+```
+
+What if we rolled five of those dice at once and added up the rolls?
+
+```
+5d6
+```
+
+If we were to also roll two 10-sided dice and subtracted the sum of those two rolls from above?
+
+```
+5d6 - 2d10
+```
+
+What if we wanted to add 15 to ensure that the value does not go below zero?
+
+```
+5d6 - 2d10 + 15
+```
+
+If the number of sides is 100, it can be replaced with a % sign (percentage, out of 100, got it?)
+
+```
+5d100 == 5d%
+```
+
+More formally, dice expressions can be specified as follows:
+
+* Any string denoting a whole number (don't start with 0 or minus sign please) is a dice expression
+* Any string of form x?(d|D)y where x and y are both whole numbers (see warning above) is a dice ? means x is optional and (d|D) means either character is acceptable.
+* Any string of form x?(d|D)% where x and y are both whole numbers is a dice expression
+* Any string of form <DiceExpression> + <DiceExpression> or form <DiceExpression> - <DiceExpression> is a dice expression.
+
+## API
 
 ```js
-var diceExpressionEvaluator = require('dice-expression-evaluator');
+var DiceExpression = require('dice-expression-evaluator');
 
-diceExpressionEvaluator('Rainbow');
+var d = new DiceExpression('2d5 + 4d2 + 10');
+```
+* `d()`: evaluates the dice expression by simulating dice rolls and returns the resulting roll
+* `d.min()`: returns the minimum possible roll for the dice expression
+* `d.max()`: returns the maximum possible roll for the dice expression
+* `d.roll()`: evaluates the dice expression by simulating dice rolls returns the resulting roll as well as the value for each term within dice the expression and the individual dice rolls within that term.
+
+
+## Examples
+
+```js
+d() // 20
+d() // 18
+d() // 23
+d.min() // 16
+d.max() // 28
+d.roll() // { roll: 23, diceSums: [7, 6, 10], diceRaw: [[3, 4], [1, 2, 2, 1], [10]] }
+
 ```
 ## License
 
